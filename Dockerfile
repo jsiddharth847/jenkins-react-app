@@ -1,7 +1,7 @@
 # -------------------------------------------------------
 # STAGE 1: Build the Vite app
 # -------------------------------------------------------
-FROM node:18-alpine AS builder
+FROM node:22-alpine AS builder
 
 # Create app directory
 WORKDIR /app
@@ -32,7 +32,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Expose port 80
-EXPOSE 5173
+EXPOSE 80
 
 # Run nginx
 CMD ["nginx", "-g", "daemon off;"]
